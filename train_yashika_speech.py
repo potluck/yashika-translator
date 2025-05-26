@@ -114,17 +114,6 @@ clf = KNeighborsClassifier(
     n_neighbors=3,
     weights='distance'
 )
-
-# Perform cross-validation
-n_splits = 3  # Use 3-fold cross-validation
-cv = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
-
-# Get cross-validation scores
-cv_scores = cross_val_score(clf, X, y, cv=cv, scoring='accuracy')
-print(f"\nCross-validation scores: {cv_scores}")
-print(f"Mean CV accuracy: {cv_scores.mean():.3f} (+/- {cv_scores.std() * 2:.3f})")
-
-# Train the final model on all data
 clf.fit(X, y)
 
 def split_audio_into_segments(audio_path, min_silence_duration=0.1):
@@ -203,5 +192,5 @@ def predict_sample(audio_path):
 
 # Example usage:
 print("\nStarting prediction...")
-results = predict_sample("/Users/potluck/code/yashika-translator/test_audio3.wav")
+results = predict_sample("/Users/potluck/code/yashika-translator/test_audio2.wav")
 print("\nPrediction results:", results)
